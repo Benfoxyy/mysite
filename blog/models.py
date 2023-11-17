@@ -13,3 +13,5 @@ class Post(models.Model):
     #tag
     #image
     #auth
+    def __str__(self):
+        return self.title
