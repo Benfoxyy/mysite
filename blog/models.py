@@ -11,6 +11,11 @@ class Post(models.Model):
     updated_date=models.DateTimeField(auto_now=True)
     class Meta:
         ordering=['-created_date']
+
+
+    def __str__(self):
+        return self.title
+    
     #category
     #tag
     #image
