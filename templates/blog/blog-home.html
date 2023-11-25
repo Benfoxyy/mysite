@@ -114,7 +114,8 @@
                 <span class="lnr lnr-calendar-full"></span>
               </p>
               <p class="view col-lg-12 col-md-12 col-6">
-                <a href="#">{{post.counted_views}} Views</a> <span class="lnr lnr-eye"></span>
+                <a href="#">{{post.counted_views}} Views</a>
+                <span class="lnr lnr-eye"></span>
               </p>
               <p class="comments col-lg-12 col-md-12 col-6">
                 <a href="#">06 Comments</a>
@@ -130,12 +131,8 @@
                 alt=""
               />
             </div>
-            <a class="posts-title" href="blog-single.html"
-              ><h3>{{post.title}}</h3></a
-            >
-            <p class="excert">
-              {{post.content}}
-            </p>
+            <a class="posts-title" href="{% url "blog:single" pid=post.id %}"><h3>{{post.title}}</h3></a>
+            <p class="excert">{{post.content}}</p>
             <a href="#" class="primary-btn">View More</a>
           </div>
         </div>
