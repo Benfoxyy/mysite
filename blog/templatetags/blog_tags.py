@@ -19,7 +19,7 @@ def summarize(value,arg):
 
 @register.inclusion_tag('blog/latest_posts.html')
 def latest_posts(arg=3):
-    posts=Post.objects.filter(status=True).order_by('published_date')[:arg]
+    posts=Post.objects.filter(status=True).order_by('-published_date')[:arg]
     return {'posts': posts}
 
 

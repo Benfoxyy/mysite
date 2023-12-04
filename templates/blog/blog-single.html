@@ -35,10 +35,9 @@
               <li>
                 {% for cat in post.category.all %}
                 <a href="{% url 'blog:category' cat_name=cat.name %}">
-                   {{cat}}
+                  {{cat}}
                 </a>
-                {% if not forloop.last %},{% endif %}
-                {% endfor %}
+                {% if not forloop.last %},{% endif %} {% endfor %}
               </li>
             </ul>
             <div class="user-details row">
@@ -265,9 +264,8 @@
       </div>
       <div class="col-lg-4 sidebar-widgets">
         <div class="widget-wrap">
-          {% include "blog/search.html" %}
-          {% include "blog/profile.html" %}
-          {% latest_posts %}
+          {% include "blog/search.html" %} {% include "blog/profile.html" %} {%
+          latest_posts %}
           <div class="single-sidebar-widget ads-widget">
             <a href="#"
               ><img
