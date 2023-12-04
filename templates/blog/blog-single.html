@@ -33,14 +33,17 @@
           <div class="col-lg-3 col-md-3 meta-details">
             <ul class="tags">
               <li>
-                <a href="#">
-                  {% for cat in post.category.all %} {{cat}} {% endfor %}
+                {% for cat in post.category.all %}
+                <a href="{% url 'blog:category' cat_name=cat.name %}">
+                   {{cat}}
                 </a>
+                {% if not forloop.last %},{% endif %}
+                {% endfor %}
               </li>
             </ul>
             <div class="user-details row">
               <p class="user-name col-lg-12 col-md-12 col-6">
-                <a href="#">{{post.auth.get_full_name}}</a>
+                <a href="#">{{post.auth}}</a>
                 <span class="lnr lnr-user"></span>
               </p>
               <p class="date col-lg-12 col-md-12 col-6">
@@ -262,18 +265,7 @@
       </div>
       <div class="col-lg-4 sidebar-widgets">
         <div class="widget-wrap">
-          <div class="single-sidebar-widget search-widget">
-            <form class="search-form" action="#">
-              <input
-                placeholder="Search Posts"
-                name="search"
-                type="text"
-                onfocus="this.placeholder = ''"
-                onblur="this.placeholder = 'Search Posts'"
-              />
-              <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
-          </div>
+          {% include "blog/search.html" %}
           {% include "blog/profile.html" %}
           {% latest_posts %}
           <div class="single-sidebar-widget ads-widget">
