@@ -1,6 +1,5 @@
 from django import template
-from blog.models import Post
-from blog.models import category
+from blog.models import Post,category
 register=template.Library()
 
 @register.simple_tag(name='count')
