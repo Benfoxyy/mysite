@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import contact
+from .models import contact,Newsletter
 
 @admin.register(contact)
 class contactAdmin(admin.ModelAdmin):
@@ -9,3 +9,8 @@ class contactAdmin(admin.ModelAdmin):
     search_fields=['subject','message']
     class Meta:
         ordering=['-created_date']
+
+
+@admin.register(Newsletter)
+class NewsletterAdmin(admin.ModelAdmin):
+    list_display=('email',)
