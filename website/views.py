@@ -2,6 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from blog.models import Post
 from .forms import ContactForm,NewsletterForm
+from django.contrib import messages
 
 def index_view(request):
     posts=Post.objects.filter(status=1)
@@ -16,6 +17,9 @@ def contact_view(request):
         form=ContactForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.add_message(request,messages.SUCCESS,'your ticket submited successfully')
+        else:
+            messages.add_message(request,messages.ERROR,'your ticket didnt submit successfully')
     form=ContactForm()
     return render(request,'website/contact.html',{'form':form})
 
