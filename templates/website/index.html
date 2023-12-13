@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% load static %} {% block body %}
+{% extends "base.html" %} {% load static %} {% load humanize %} {% block body %}
 <!-- start banner Area -->
 <section class="banner-area relative">
   <div class="overlay overlay-bg"></div>
@@ -214,7 +214,7 @@
               <p>
                 {{post.content|truncatewords:5}}
               </p>
-              <h6 class="date">{{post.published_date|date:'d M Y'}}</h6>
+              <h6 class="date">{{post.published_date|naturaltime}}</h6>
             </div>
           </div>
         {% endfor %}

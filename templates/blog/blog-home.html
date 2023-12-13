@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% load static %} {% load blog_tags %} {% block body %}
+{% extends "base.html" %} {% load static %} {% load humanize %} {% load blog_tags %} {% block body %}
 <!-- start banner Area -->
 <section class="banner-area relative blog-home-banner" id="home">
   <div class="overlay overlay-bg"></div>
@@ -119,7 +119,7 @@
                 <span class="lnr lnr-calendar-full"></span>
               </p>
               <p class="view col-lg-12 col-md-12 col-6">
-                <a href="#">{{post.counted_views}} Views</a>
+                <a href="#">{{post.counted_views|intword}} Views</a>
                 <span class="lnr lnr-eye"></span>
               </p>
               <p class="comments col-lg-12 col-md-12 col-6">
