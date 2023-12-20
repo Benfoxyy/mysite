@@ -1,5 +1,6 @@
-Django>3.2,<3.3
-asgiref
-pytz
-sqlparse
-pillow
+asgiref==3.7.2
+Django==3.2.23
+django-robots==6.1
+Pillow==10.1.0
+pytz==2023.3.post1
+sqlparse==0.4.4
