@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'website.apps.WebsiteConfig',
     'django_summernote',
+    'captcha',
     'robots',
     'blog',
     'taggit',
