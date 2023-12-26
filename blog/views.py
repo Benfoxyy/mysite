@@ -1,6 +1,9 @@
 from django.shortcuts import render,get_object_or_404
 from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 from .models import *
+from django.contrib import messages
+from .forms import CommentsForm
+
 def blog_view(request,cat_name=None,author_username=None,tag_name=None,):
     posts=Post.objects.filter(status=1)
     if cat_name:
@@ -22,10 +25,18 @@ def blog_view(request,cat_name=None,author_username=None,tag_name=None,):
 
 def single_view(request,pid):
     post=get_object_or_404(Post,pk=pid,status=1)
+    comments=Comments.objects.filter(post=post.id,approved=True)
+    if request.method=='POST':
+        form=CommentsForm(request.POST)
+        if form.is_valid():
+            form.save()    
+        else:
+            messages.add_message(request,messages.ERROR,'your comment didnt submit')    
     if post:
-        post.counted_views = post.counted_views + 1
+        post.counted_views += 1
         post.save()
-    context={'post':post}
+    form=CommentsForm()
+    context={'post':post,'comments':comments,'form':form}
     return render(request,'blog/blog-single.html',context)
 #def cat_view (request,cat_name):
 #    posts=Post.objects.filter(status=1)

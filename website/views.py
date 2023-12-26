@@ -19,7 +19,7 @@ def contact_view(request):
             form.save()
             messages.add_message(request,messages.SUCCESS,'your ticket submited successfully')
         else:
-            messages.add_message(request,messages.ERROR,'your ticket didnt submit successfully')
+            messages.add_message(request,messages.ERROR,'your ticket didnt submit')
     form=ContactForm()
     return render(request,'website/contact.html',{'form':form})
 
