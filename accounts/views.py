@@ -17,9 +17,8 @@ def login_view(request):
         return redirect('/')
     form = AuthenticationForm()
     return render(request,'accounts/login.html',{'form':form})
-
 def logout_view(request):
-    return render(request,'accounts/logout.html')
+    return render(request,'logout.html')
 
 def signup_view(request):
-    return render(request,'accounts/signup.html')
+    return render(request,'signup.html')

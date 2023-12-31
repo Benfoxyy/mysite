@@ -4,11 +4,6 @@ from blog.models import Post
 from .forms import ContactForm,NewsletterForm
 from django.contrib import messages
 
-def index_view(request):
-    posts=Post.objects.filter(status=1)
-    context={'posts': posts}
-    return render(request,'website/index.html',context)
-
 def about_view(request):
     return render(request,'website/about.html')
 
