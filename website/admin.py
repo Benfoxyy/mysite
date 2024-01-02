@@ -1,16 +1,13 @@
 from django.contrib import admin
-from .models import contact,Newsletter
+from website.models import Contact,Newsletter
+# Register your models here.
 
-@admin.register(contact)
-class contactAdmin(admin.ModelAdmin):
-    date_hierarchy='created_date'
-    list_display=('name','subject','email','created_date')
-    list_filter=['subject']
-    search_fields=['subject','message']
-    class Meta:
-        ordering=['-created_date']
+class ContactAdmin(admin.ModelAdmin):
+    date_hierarchy = 'created_date'
+    list_display = ('name','email','created_date')
+    list_filter = ('email',)
+    search_fields = ('name','message')
 
+admin.site.register(Contact,ContactAdmin)
+admin.site.register(Newsletter)
 
-@admin.register(Newsletter)
-class NewsletterAdmin(admin.ModelAdmin):
-    list_display=('email',)

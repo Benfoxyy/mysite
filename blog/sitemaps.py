@@ -1,5 +1,4 @@
 from django.contrib.sitemaps import Sitemap
-from django.db.models.base import Model
 from blog.models import Post
 from django.urls import reverse
 
@@ -13,5 +12,5 @@ class BlogSitemap(Sitemap):
     def lastmod(self, obj):
         return obj.published_date
     
-    def location(self, item):
+    def location(self,item):
         return reverse('blog:single',kwargs={'pid':item.id})

@@ -1,20 +1,20 @@
 from django import forms
-from .models import contact,Newsletter
+from website.models import Contact,Newsletter
 from captcha.fields import CaptchaField
-
-#class myforms(forms.Form):
-#    name = forms.CharField(max_length=255)
-#    email = forms.EmailField()
-#    subject = forms.CharField(max_length=255)
-#    message = forms.CharField(widget=forms.Textarea)
+class NameForm(forms.Form):
+    name = forms.CharField(max_length=255)
+    email = forms.EmailField()
+    subject = forms.CharField(max_length=255)
+    message = forms.CharField(widget=forms.Textarea)
 
 class ContactForm(forms.ModelForm):
     captcha = CaptchaField()
     class Meta:
-        model = contact
+        model = Contact
         fields = '__all__'
 
 class NewsletterForm(forms.ModelForm):
+
     class Meta:
         model = Newsletter
-        fields = ['email']
+        fields = '__all__'

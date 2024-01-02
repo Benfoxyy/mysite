@@ -1,11 +1,11 @@
 from django.contrib.syndication.views import Feed
 from django.urls import reverse
-from .models import Post
+from blog.models import Post
 
 class LatestEntriesFeed(Feed):
-    title = "blog news"
-    link = "rss/feed/"
-    description = "best blog ever."
+    title = "blog newest posts"
+    link = "/rss/feed"
+    description = "best blog ever"
 
     def items(self):
         return Post.objects.filter(status=True)
